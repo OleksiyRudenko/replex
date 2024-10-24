@@ -1,0 +1,19 @@
+{
+  "name": "replex",
+  "version": "0.0.1",
+  "description": "REsource PLanning and EXecution monitoring tool",
+  "main": "index.js",
+  "scripts": {
+    "db:mysql-init-windows": "echo Create my.ini for windows with local MySQL server location and credentials",
+    "dolt:get-db": "echo Clone dolt-managed db from dolthub",
+    "dolt:checkout": "echo Checkout required brach",
+    "dolt:push": "echo Update remote on dolthub",
+    "dolt:start": "echo Start MySQL server and dolt middleware",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "replex"
+  ],
+  "author": "Oleksii Rudenko",
+  "license": "ISC"
+}
