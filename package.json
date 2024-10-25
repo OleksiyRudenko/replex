@@ -3,16 +3,22 @@
   "version": "0.0.1",
   "description": "REsource PLanning and EXecution monitoring tool",
   "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node" : ">=20.17.0 <30.0.0",
+    "npm" : ">=10.8.0 <20.0.0"
+  },
   "scripts": {
     "db:mysql-init-windows": "echo Create my.ini for windows with local MySQL server location and credentials",
+    "db:set-credentials": "echo Set credentials in an untracked file",
     "dolt:get-db": "echo Clone dolt-managed db from dolthub",
-    "dolt:checkout": "echo Checkout required brach",
+    "dolt:checkout": "echo Checkout dolt branch",
     "dolt:push": "echo Update remote on dolthub",
-    "dolt:start": "echo Start MySQL server and dolt middleware",
+    "dolt:start": "dolt sql-server && mysql --version && mysql --host 127.0.0.1 --port 3306 -u dev -p xxx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "replex"
+    "replex", "planning", "budgeting"
   ],
   "author": "Oleksii Rudenko",
   "license": "ISC"
