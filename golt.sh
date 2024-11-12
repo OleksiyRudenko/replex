@@ -85,9 +85,9 @@ case "$1" in
     if [ "$2" = "" ]; then
       echo "=== List data branches"
       echo "=== Git branch >>>"
-      git branch --list "d*"
+      git branch --list "$program_branch_prefix-*"
       echo "=== Dolt branch --list >>>"
-      (cd $database_repo_root && dolt branch --list | grep "^. d.*")
+      (cd $database_repo_root && dolt branch --list | grep "^. $program_branch_prefix-.*")
     else
       echo "=== Git checkout -b $program_branch_prefix-$2-$3-$4>>>"
       git checkout -b "$program_branch_prefix-$2-$3-$4"
