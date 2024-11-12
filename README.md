@@ -137,18 +137,20 @@ Run `./golt.sh register-golt-alias` to use `golt.sh` as a command.
 
 `golt.ini` defines basic variables for git/dolt common operations.
 
-`golt` only implements basic operations with restricted set of options. You will still need
-to run both git and dolt commands to keep things in sync, if `golt` doesn't offer synced operations.
+`golt` only implements basic operations with restricted set of options available.
+You will still need to run both git and dolt commands to keep things in sync,
+if `golt` doesn't offer synced operations.
 
-You still have the flexibility to branch only project's codebase, not staying in sync with dolt.
+You still have the flexibility to branch only project's codebase,
+not staying in sync with dolt.
 
-The section below describes typical use cases.
+The section below describes typical use cases within the project's business context.
 
 ### Use cases
 
-| Use case                 | Branching strategy                      | Command to use
-|--------------------------|-----------------------------------------|-----------------------------------------------------
-|  Create new data program | `data-program_codename-username-create` | `create-branch.sh program_codename username create`
+| Use case                 | Branching strategy                      | Command to use                                      |
+|--------------------------|-----------------------------------------|-----------------------------------------------------|
+|  Create new data program | `data_program_codename-username-create` | `create-branch.sh program_codename username create` |
 Change program scope
 Merge updated program
 Change data for multiple programs (within 1 theme)
@@ -173,13 +175,13 @@ commands invocation. WIP.
 
 | git command | git hook                                    | actions |
 |-------------|---------------------------------------------|---------|
-| status      | n/a                                         | ... |
-| checkout    | post-checkout                               | ... |
-| fetch       | n/a                                         | ... |
-| remote      | n/a                                         | ... |
-| pull        | n/a                                         | ... |
-| merge       | post-merge                                  | ... |
-| add         | n/a                                         | ... |
-| commit      | pre-commit<br/>post-commit<br/>post-rewrite | ... |
-| rebase      | pre-rebase<br/>post-rewrite                 | ... |
-| push        | pre-push                                    | ... |
+| status      | n/a                                         | ...     |
+| checkout    | post-checkout                               | ...     |
+| fetch       | n/a                                         | ...     |
+| remote      | n/a                                         | ...     |
+| pull        | n/a                                         | ...     |
+| merge       | post-merge                                  | ...     |
+| add         | n/a                                         | ...     |
+| commit      | pre-commit<br/>post-commit<br/>post-rewrite | ...     |
+| rebase      | pre-rebase<br/>post-rewrite                 | ...     |
+| push        | pre-push                                    | ...     |
