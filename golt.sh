@@ -54,6 +54,7 @@ case "$1" in
     (cd $database && dolt remote -v)
     ;;
   "checkout")
+    echo "Dolt errors. See also https://github.com/dolthub/dolt/issues/7548"
     if [ "$2" = "" ]; then
       echo "=== List branches"
       echo "=== Git branch >>>"
@@ -89,7 +90,7 @@ case "$1" in
       echo "=== Dolt branch --list >>>"
       (cd $database_repo_root && dolt branch --list | grep "^. $program_branch_prefix-.*")
     else
-      echo "=== Git checkout -b $program_branch_prefix-$2-$3-$4>>>"
+      echo "=== Git checkout -b $program_branch_prefix-$2-$3-$4 >>>"
       git checkout -b "$program_branch_prefix-$2-$3-$4"
       echo "=== Dolt checkout -b >>>"
       dolt sql -q "CALL DOLT_CHECKOUT('-b', '$program_branch_prefix-$2-$3-$4')"

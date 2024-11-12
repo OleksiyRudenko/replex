@@ -31,7 +31,9 @@ Dolt-managed DBMS:
 - Install [dolt](https://docs.dolthub.com/introduction/installation)
 - Install [MySQL server](https://dev.mysql.com/downloads/mysql/) (e.g. MySQL CS v8.4.3),
   you will only use mysql CLI from this installation as dolt comes bundled with MySQL-compatible server.
-- Install MySQL workbench, e.g. [TablePlus](https://tableplus.com/download)
+- Install MySQL workbench, e.g.
+  [TablePlus](https://tableplus.com/download) or
+  [Dolt Workbench](https://github.com/dolthub/dolt-workbench)
 
 ### Getting started with DB on dolthub
 
@@ -158,6 +160,11 @@ Work on data visualization scripts (for existing data)
 
 - [Data Versioning](https://lakefs.io/blog/data-versioning/)
 - [The Definitive Guide to Database Version Control](https://www3.dbmaestro.com/the-definitive-guide-to-database-version-control)
+- [Dolt and KnexJS](https://www.dolthub.com/blog/2023-09-27-dolt-and-knexjs/)
+- [Dolt and Prisma](https://www.dolthub.com/blog/2024-06-28-dolt-and-prisma/)
+- [Dolt + Looker Studio](https://www.dolthub.com/blog/2023-02-13-dolt-looker/)
+- [ChartSQL for Dolt](https://github.com/dolthub/dolthub-issues/issues/544)
+- [Dolt GUIs](https://www.dolthub.com/blog/2024-11-04-dolt-guis/)
 
 ## Appendix - Web-hooks
 
