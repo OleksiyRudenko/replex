@@ -16,7 +16,9 @@ Help()
   echo "  status - git and dolt status"
   echo "  remote - list git and dolt remotes"
   echo "  checkout - checkout branch with both git and dolt"
-  echo "  create-branch - create branch following business workflow on both git and dolt"
+  echo "  create-branch name - create branch on both git and dolt"
+  echo "  create-program-branch program user modifier -"
+  echo "    create branch following business workflow on both git and dolt"
   echo "  commit - "
   echo "  push - "
   echo "  merge - "
@@ -51,12 +53,47 @@ case "$1" in
     echo "=== Dolt remote >>>"
     (cd $database && dolt remote -v)
     ;;
+  "checkout")
+    if [ "$2" = "" ]; then
+      echo "=== List branches"
+      echo "=== Git branch >>>"
+      git branch
+      echo "=== Dolt branch --list >>>"
+      (cd $database_repo_root && dolt branch --list)
+    else
+      echo "=== Git checkout >>>"
+      git checkout "$2"
+      echo "=== Dolt checkout >>>"
+      dolt sql -q "CALL DOLT_CHECKOUT('$2')"
+    fi
+    ;;
   "create-branch")
-    echo "=== Git checkout -b>>>"
-    git checkout -b "data-$1-$2-$3"
-    echo "=== Dolt branch & checkout >>>"
-    (cd $database_repo_root && dolt branch "data-$1-$2-$3")
-    (cd $database_repo_root && dolt checkout "data-$1-$2-$3")
+    if [ "$2" = "" ]; then
+      echo "=== List branches"
+      echo "=== Git branch >>>"
+      git branch
+      echo "=== Dolt branch --list >>>"
+      (cd $database_repo_root && dolt branch --list)
+    else
+      echo "=== Git checkout -b >>>"
+      git checkout -b "$2"
+      echo "=== Dolt checkout -b >>>"
+      dolt sql -q "CALL DOLT_CHECKOUT('-b', '$2')"
+    fi
+    ;;
+  "create-program-branch")
+    if [ "$2" = "" ]; then
+      echo "=== List data branches"
+      echo "=== Git branch >>>"
+      git branch --list "d*"
+      echo "=== Dolt branch --list >>>"
+      (cd $database_repo_root && dolt branch --list | grep "^. d.*")
+    else
+      echo "=== Git checkout -b $program_branch_prefix-$2-$3-$4>>>"
+      git checkout -b "$program_branch_prefix-$2-$3-$4"
+      echo "=== Dolt checkout -b >>>"
+      dolt sql -q "CALL DOLT_CHECKOUT('-b', '$program_branch_prefix-$2-$3-$4')"
+    fi
     ;;
   *)
     Help

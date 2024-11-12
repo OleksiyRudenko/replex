@@ -114,34 +114,33 @@ on your DB, commit, push, pull changes. Read more at [Git For Data](https://docs
 
 However, Dolt branches and Git branches are independent concepts.
 
-This project implies that we want them synchronized for consistency. It also uses business
-context of the project for this purpose.
+This project implies that we want them synchronized for consistency when we version data or project's
+features depend on versioned data. The project also uses business context for this purpose.
 
-> We considered un-synced branches and storing current Dolt branch name in a dedicated file,
+> We considered un-synced branches and also storing current Dolt branch name in a dedicated file,
 > so that git and dolt branch operations could be decoupled. However, managing the file's content
-> when merging, deleting a branch would be a headache.
+> when merging, deleting a branch on both git and dole managed versions of project and database
+> would be a headache.
 
-We use [git hooks](https://githooks.com/) to conduct relevant dolt operations upon certain git
-commands invocation.
-
-| git command | git hook                                    | actions |
-|-------------|---------------------------------------------|---------|
-| status      | n/a                                         | ... |
-| checkout    | post-checkout                               | ... |
-| fetch       | n/a                                         | ... |
-| remote      | n/a                                         | ... |
-| pull        | n/a                                         | ... |
-| merge       | post-merge                                  | ... |
-| add         | n/a                                         | ... |
-| commit      | pre-commit<br/>post-commit<br/>post-rewrite | ... |
-| rebase      | pre-rebase<br/>post-rewrite                 | ... |
-| push        | pre-push                                    | ... |
-
-
-We also use `./create-branch.sh` to create branches when we want to manipulate data
-in versioned workflow. In this project's business context we add or change data
-in the context of programs and we also want to support experimentation for
+We use `./golt.sh` (`golt = git x dolt` but do not question math behind this logic)
+to manage branches and versions for both the project itself and data
+when we want to manipulate data in versioned workflow.
+In this project's business context we add or change data
+in the context of specific programs and we also want to support experimentation for
 business computations by multiple users and multiple experiments per user.
+
+Run `./golt.sh` to see operations available.
+
+Run `./golt.sh register-golt-alias` to use `golt.sh` as a command.
+
+`golt.ini` defines basic variables for git/dolt common operations.
+
+`golt` only implements basic operations with restricted set of options. You will still need
+to run both git and dolt commands to keep things in sync, if `golt` doesn't offer synced operations.
+
+You still have the flexibility to branch only project's codebase, not staying in sync with dolt.
+
+The section below describes typical use cases.
 
 ### Use cases
 
@@ -155,9 +154,25 @@ Change data for multiple programs (within multiple themes)
 Update teams, data bundle types, benchmarks, devices etc
 Work on data visualization scripts (for existing data)
 
-
-
 ## References
 
 - [Data Versioning](https://lakefs.io/blog/data-versioning/)
 - [The Definitive Guide to Database Version Control](https://www3.dbmaestro.com/the-definitive-guide-to-database-version-control)
+
+## Appendix - Web-hooks
+
+We consider using [git hooks](https://githooks.com/) to conduct relevant dolt operations upon certain git
+commands invocation. WIP.
+
+| git command | git hook                                    | actions |
+|-------------|---------------------------------------------|---------|
+| status      | n/a                                         | ... |
+| checkout    | post-checkout                               | ... |
+| fetch       | n/a                                         | ... |
+| remote      | n/a                                         | ... |
+| pull        | n/a                                         | ... |
+| merge       | post-merge                                  | ... |
+| add         | n/a                                         | ... |
+| commit      | pre-commit<br/>post-commit<br/>post-rewrite | ... |
+| rebase      | pre-rebase<br/>post-rewrite                 | ... |
+| push        | pre-push                                    | ... |
