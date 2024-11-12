@@ -9,12 +9,11 @@
     "npm" : ">=10.8.0 <20.0.0"
   },
   "scripts": {
-    "db:mysql-init": "echo Create my.ini for windows with local MySQL server location and credentials",
-    "db:set-credentials": "echo Set credentials in an untracked file",
-    "dolt:get-db": "echo Clone dolt-managed db from dolthub",
-    "dolt:checkout": "echo Checkout dolt branch",
-    "dolt:push": "echo Update remote on dolthub",
-    "dolt:start": "systemctl status mysql && mysql --version && dolt sql-server -P 3307",
+    "dolt:get-db": "golt clone",
+    "git:set-hooks": "git config --local set core.hooksPath \"./.githooks\"",
+    "dolt:start": "./db/dolt.start.sh",
+    "dolt:mysql-cli": "./db/dolt.mysql.cli.sh",
+    "branch": "program-branch-create.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

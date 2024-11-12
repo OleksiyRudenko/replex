@@ -1,4 +1,9 @@
 const roles = ["annotator", "validator", "verificator"]
+const mlPurpose = ["bulk_planning", "POC", "train+test", "eval"]
+const devicePhase = ["bulk_planning", "DVT", "EVT"]
+const dataBundleTypes = ["bulk_planning", "TBD", "ding", "sirena", "dump", "discarded_event", "ding+discard", "sensoric_data"]
+const dataTrackStatus = ["scoping", "planned", "postponed", "in progress", "cancelled", "done"]
+const requestAccuracy = ["low", "medium", "high"]
 export const db_schemaData = {
   databaseName: "data-delivery-roadmap",
   types: {
@@ -45,13 +50,13 @@ export const db_schemaData = {
     data_track: {
       data_track_id: "*PK_INT",
       data_program_id: ["*FK", "data_program"],
-      ml_purpose: ["ENUM", ["bulk_planning", "POC", "train+test", "eval"]],
-      device_phase: ["ENUM", ["bulk_planning", "DVT", "EVT"]],
-      data_bundle_types: ["SET", ["bulk_planning", "TBD", "ding", "sirena", "dump", "discarded_event", "ding+discard", "sensoric_data"],],
+      ml_purpose: ["ENUM", mlPurpose],
+      device_phase: ["ENUM", devicePhase],
+      data_bundle_types: ["SET", dataBundleTypes],
       start_date: "DATE",
       due_date: "DATE",
-      status: ["ENUM", ["scoping", "planned", "postponed", "in progress", "cancelled", "done"]],
-      request_accuracy: ["ENUM", ["low", "medium", "high"]],
+      status: ["ENUM", dataTrackStatus],
+      request_accuracy: ["ENUM", requestAccuracy],
       signed_off_by: "*name",
     },
     data_track__secondary_op_program: {
