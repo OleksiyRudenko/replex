@@ -35,6 +35,20 @@ Dolt-managed DBMS:
   [TablePlus](https://tableplus.com/download) or
   [Dolt Workbench](https://github.com/dolthub/dolt-workbench)
 
+#### Note on Dolt Workbench
+
+If you use Linux under Windows WSL 2,
+use these [instructions](localhost:9002/graphql) with caveats:
+- Install `yarn` by running `corepack enable` ([ref](https://yarnpkg.com/getting-started/install))
+- Any servers intended to run under WSL2 and served via `localhost`
+  are actually available via address shown by `ip addr show eth0`.
+  For example, WSL2 ip address is `172.27.202.253`, hence
+  [GraphQL playground](http://172.27.202.253:9002/graphql) and
+  running [Dolt Workbench](http://172.27.202.253:3002/).
+  Of course Chrome browser will want you that the connection is not secure.
+- Want to know more on WSL2 servers accessibility?
+  [Here you go!](https://gist.github.com/OleksiyRudenko/8e1dc353552f8e5816256cd67859e28b)
+
 ### Getting started with DB on dolthub
 
 `npm run dolt:get-db` - to clone the `data-delivery-roadmap` DB repo

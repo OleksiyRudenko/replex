@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "engines": {
-    "node" : ">=20.17.0 <30.0.0",
-    "npm" : ">=10.8.0 <20.0.0"
+    "node": ">=20.17.0 <30.0.0",
+    "npm": ">=10.8.0 <20.0.0"
   },
   "scripts": {
     "dolt:get-db": "golt clone",
@@ -17,8 +17,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "replex", "planning", "budgeting"
+    "replex",
+    "planning",
+    "budgeting"
   ],
   "author": "Oleksii Rudenko",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "knex": "^3.1.0",
+    "mysql2": "^3.11.4"
+  }
 }
