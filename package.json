@@ -27,5 +27,8 @@
     "dotenv": "^16.4.5",
     "knex": "^3.1.0",
     "mysql2": "^3.11.4"
+  },
+  "localDependencies": {
+    "dolt-knexjs-db-controller": "../dolt-knexjs-db-controller"
   }
 }

@@ -38,7 +38,7 @@ Dolt-managed DBMS:
 #### Note on Dolt Workbench
 
 If you use Linux under Windows WSL 2,
-use these [instructions](localhost:9002/graphql) with caveats:
+use these [instructions](https://github.com/dolthub/dolt-workbench?tab=readme-ov-file#getting-started-from-source) with caveats:
 - Install `yarn` by running `corepack enable` ([ref](https://yarnpkg.com/getting-started/install))
 - Any servers intended to run under WSL2 and served via `localhost`
   are actually available via address shown by `ip addr show eth0`.
